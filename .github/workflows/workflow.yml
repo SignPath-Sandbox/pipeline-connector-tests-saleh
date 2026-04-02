@@ -10,7 +10,8 @@ on:
 #     repository-projects: read
 
 env:
-  CONNECTOR_URL: https://pipelineconnector-dev5.connectors.dev.signpath.io:15001
+  CONNECTOR_URL: https://ch89dbp6-7199.euw.devtunnels.ms
+  #CONNECTOR_URL: https://pipelineconnector-dev5.connectors.dev.signpath.io:15001
   ENDPOINT_KEY: GitHubCom 
   ORG_ID: 9ff791fc-c563-44e3-ab8c-86a33c910bbe
   INPUT_ARTIFACT: ./script.ps1
