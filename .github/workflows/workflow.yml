@@ -25,10 +25,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Upload the artifcat file
         id: upload-artifact-step
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with: 
           name: my-custom-artifact-name
           path: ${{ env.INPUT_ARTIFACT }}
+          archive: false
       - name: Run submit signing request
         id: submit_with_download
         uses: signpath/github-action-submit-signing-request@feature/SIGN-8404
