@@ -10,8 +10,8 @@ on:
 #     repository-projects: read
 
 env:
-  #CONNECTOR_URL: https://pipelineconnector-dev5.connectors.dev.signpath.io:15001/GitHubActions/GitHubCom
-  CONNECTOR_URL: https://githubactions-dev5.connectors.dev.signpath.io:15021
+  CONNECTOR_URL: https://pipelineconnector-dev5.connectors.dev.signpath.io:15001/GitHubActions/GitHubCom
+  #CONNECTOR_URL: https://githubactions-dev5.connectors.dev.signpath.io:15021
   ORG_ID: 9ff791fc-c563-44e3-ab8c-86a33c910bbe
   INPUT_ARTIFACT: ./script.ps1
   OUTPUT_PATH: signed-artifact
@@ -47,9 +47,10 @@ jobs:
             skip-decompress: true
       - name: Upload the signed artifact
         id: upload-signed-artifact-step
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with: 
             name: signed-artifact
             path: ${{ env.OUTPUT_PATH }}
+            archive: false
       - run: |
           echo "Signed Artifact Id: ${{ steps.upload-signed-artifact-step.outputs.artifact-id }}"
