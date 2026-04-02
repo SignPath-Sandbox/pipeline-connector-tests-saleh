@@ -40,7 +40,7 @@ jobs:
             project-slug: PipelineConnector
             # this SigningPolicy has auto-approve enabled, so you don't need to approve the signing request
             signing-policy-slug: test-signing
-            artifact-configuration-slug: initial
+            artifact-configuration-slug: PowerShell
             github-artifact-id: '${{ steps.upload-artifact-step.outputs.artifact-id }}'
             wait-for-completion: true
             output-artifact-directory: ${{ env.OUTPUT_PATH }}
