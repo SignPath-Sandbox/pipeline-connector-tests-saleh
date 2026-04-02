@@ -52,5 +52,6 @@ jobs:
             name: my-custom-artifact-name-upload2
             path: ${{ env.OUTPUT_PATH }}
             archive: false
+            overwrite: true
       - run: |
           echo "Signed Artifact Id: ${{ steps.upload-signed-artifact-step.outputs.artifact-id }}"
