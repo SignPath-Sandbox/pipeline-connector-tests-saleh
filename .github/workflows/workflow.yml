@@ -27,7 +27,7 @@ jobs:
         id: upload-artifact-step
         uses: actions/upload-artifact@v7
         with: 
-          name: my-custom-artifact-name
+          name: my-custom-artifact-name-upload
           path: ${{ env.INPUT_ARTIFACT }}
           archive: false
       - name: Run submit signing request
@@ -49,7 +49,7 @@ jobs:
         id: upload-signed-artifact-step
         uses: actions/upload-artifact@v7
         with: 
-            name: signed-artifact
+            name: my-custom-artifact-name-upload2
             path: ${{ env.OUTPUT_PATH }}
             archive: false
       - run: |
