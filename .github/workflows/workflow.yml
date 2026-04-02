@@ -29,7 +29,7 @@ jobs:
         with: 
           name: my-custom-artifact-name
           path: ${{ env.INPUT_ARTIFACT }}
-          archive: true
+          archive: false
       - name: Run submit signing request
         id: submit_with_download
         uses: signpath/github-action-submit-signing-request@feature/SIGN-8404
