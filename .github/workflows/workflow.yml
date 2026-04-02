@@ -44,7 +44,7 @@ jobs:
             github-artifact-id: '${{ steps.upload-artifact-step.outputs.artifact-id }}'
             wait-for-completion: true
             output-artifact-directory: ${{ env.OUTPUT_PATH }}
-            skip-decompress: true
+            skip-decompress: false
       - name: Upload the signed artifact
         id: upload-signed-artifact-step
         uses: actions/upload-artifact@v4
