@@ -27,7 +27,7 @@ jobs:
         id: upload-artifact-step
         uses: actions/upload-artifact@v4
         with: 
-          name: original-artifact
+          name: my-custom-artifact-name
           path: ${{ env.INPUT_ARTIFACT }}
       - name: Run submit signing request
         id: submit_with_download
@@ -43,7 +43,7 @@ jobs:
             github-artifact-id: '${{ steps.upload-artifact-step.outputs.artifact-id }}'
             wait-for-completion: true
             output-artifact-directory: ${{ env.OUTPUT_PATH }}
-            skip-decompress: false
+            skip-decompress: true
       - name: Upload the signed artifact
         id: upload-signed-artifact-step
         uses: actions/upload-artifact@v4
