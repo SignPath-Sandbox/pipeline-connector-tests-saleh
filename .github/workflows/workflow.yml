@@ -14,7 +14,7 @@ env:
   #CONNECTOR_URL: https://githubactions-dev5.connectors.dev.signpath.io:15021
   ORG_ID: 9ff791fc-c563-44e3-ab8c-86a33c910bbe
   INPUT_ARTIFACT: ./script.ps1
-  OUTPUT_PATH: signed-artifact
+  OUTPUT_PATH: ./signed-artifact
 
 jobs:
   build:
@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with: 
             name: my-custom-artifact-name-upload2
-            path: ${{ env.OUTPUT_PATH }}/2
+            path: ${{ env.OUTPUT_PATH }}
             archive: false
       - run: |
           echo "Signed Artifact Id: ${{ steps.upload-signed-artifact-step.outputs.artifact-id }}"
