@@ -10,8 +10,9 @@ on:
 #     repository-projects: read
 
 env:
-  #CONNECTOR_URL: https://pipelineconnector-dev5.connectors.dev.signpath.io:15001/GitHubActions/GitHubCom
-  CONNECTOR_URL: https://githubactions-dev5.connectors.dev.signpath.io:15021
+  USE_PIPELINECONNECTOR: false
+  PIPELINECONNECTOR_CONNECTOR_URL: https://pipelineconnector-dev5.connectors.dev.signpath.io:15001/GitHubActions/GitHubCom
+  GITHUB_CONNECTOR_URL: https://githubactions-dev5.connectors.dev.signpath.io:15021
   ORG_ID: 9ff791fc-c563-44e3-ab8c-86a33c910bbe
   INPUT_ARTIFACT: ./script.ps1
   OUTPUT_PATH: signed-artifact
@@ -29,18 +30,18 @@ jobs:
         with: 
           name: my-custom-artifact-name-upload
           path: ${{ env.INPUT_ARTIFACT }}
-          archive: false
+          #archive: false
       - name: Run submit signing request
         id: submit_with_download
         uses: signpath/github-action-submit-signing-request@feature/SIGN-8404
         with:
-            connector-url: ${{ env.CONNECTOR_URL }}
+            connector-url: ${{ env.USE_PIPELINECONNECTOR == 'true' && env.PIPELINECONNECTOR_CONNECTOR_URL || env.GITHUB_CONNECTOR_URL }}
             api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
             organization-id: ${{ env.ORG_ID }}
-            project-slug: GitHub__Taha #PipelineConnector
+            project-slug: ${{ env.USE_PIPELINECONNECTOR == 'true' && 'PipelineConnector' || 'GitHub__Taha' }}
             # this SigningPolicy has auto-approve enabled, so you don't need to approve the signing request
             signing-policy-slug: test-signing
-            artifact-configuration-slug: initial #PowerShell
+            artifact-configuration-slug: ${{ env.USE_PIPELINECONNECTOR == 'true' && 'PowerShell' || 'initial' }}
             github-artifact-id: '${{ steps.upload-artifact-step.outputs.artifact-id }}'
             wait-for-completion: true
             output-artifact-directory: ${{ env.OUTPUT_PATH }}
