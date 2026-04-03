@@ -10,8 +10,8 @@ on:
 #     repository-projects: read
 
 env:
-  CONNECTOR_URL: https://pipelineconnector-dev5.connectors.dev.signpath.io:15001/GitHubActions/GitHubCom
-  #CONNECTOR_URL: https://githubactions-dev5.connectors.dev.signpath.io:15021
+  #CONNECTOR_URL: https://pipelineconnector-dev5.connectors.dev.signpath.io:15001/GitHubActions/GitHubCom
+  CONNECTOR_URL: https://githubactions-dev5.connectors.dev.signpath.io:15021
   ORG_ID: 9ff791fc-c563-44e3-ab8c-86a33c910bbe
   INPUT_ARTIFACT: ./script.ps1
   OUTPUT_PATH: signed-artifact
@@ -37,10 +37,10 @@ jobs:
             connector-url: ${{ env.CONNECTOR_URL }}
             api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
             organization-id: ${{ env.ORG_ID }}
-            project-slug: PipelineConnector
+            project-slug: GitHub__Taha #PipelineConnector
             # this SigningPolicy has auto-approve enabled, so you don't need to approve the signing request
             signing-policy-slug: test-signing
-            artifact-configuration-slug: PowerShell
+            artifact-configuration-slug: initial #PowerShell
             github-artifact-id: '${{ steps.upload-artifact-step.outputs.artifact-id }}'
             wait-for-completion: true
             output-artifact-directory: ${{ env.OUTPUT_PATH }}
