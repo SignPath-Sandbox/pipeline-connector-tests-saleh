@@ -30,7 +30,7 @@ jobs:
         with: 
           name: my-custom-artifact-name-upload
           path: ${{ env.INPUT_ARTIFACT }}
-          archive: false
+          archive: true
       - name: Run submit signing request
         id: submit_with_download
         uses: signpath/github-action-submit-signing-request@feature/SIGN-8404
@@ -41,7 +41,7 @@ jobs:
             project-slug: ${{ env.USE_PIPELINECONNECTOR == 'true' && 'PipelineConnector' || 'GitHub__Taha' }}
             # this SigningPolicy has auto-approve enabled, so you don't need to approve the signing request
             signing-policy-slug: test-signing
-            artifact-configuration-slug: ${{ env.USE_PIPELINECONNECTOR == 'true' && 'PowerShell' || 'initial' }}
+            artifact-configuration-slug: ${{ env.USE_PIPELINECONNECTOR == 'true' && 'initial' || 'initial' }} #PowerShell
             github-artifact-id: '${{ steps.upload-artifact-step.outputs.artifact-id }}'
             wait-for-completion: true
             output-artifact-directory: ${{ env.OUTPUT_PATH }}
