@@ -45,4 +45,4 @@ jobs:
             github-artifact-id: '${{ steps.upload-artifact-step.outputs.artifact-id }}'
             wait-for-completion: true
             output-artifact-directory: ${{ env.OUTPUT_PATH }}
-            #skip-decompress: true
+            skip-decompress: true
