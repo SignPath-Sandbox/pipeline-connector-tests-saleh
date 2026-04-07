@@ -10,7 +10,7 @@ on:
 #     repository-projects: read
 
 env:
-  USE_PIPELINECONNECTOR: false
+  USE_PIPELINECONNECTOR: true
   PIPELINECONNECTOR_CONNECTOR_URL: https://pipelineconnector-dev5.connectors.dev.signpath.io:15001/GitHubActions/GitHubCom
   GITHUB_CONNECTOR_URL: https://githubactions-dev5.connectors.dev.signpath.io:15021
   ORG_ID: 9ff791fc-c563-44e3-ab8c-86a33c910bbe
