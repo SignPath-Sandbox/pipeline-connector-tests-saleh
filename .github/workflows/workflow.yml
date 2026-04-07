@@ -41,7 +41,7 @@ jobs:
             project-slug: ${{ env.USE_PIPELINECONNECTOR == 'true' && 'PipelineConnector' || 'GitHub__Taha' }}
             # this SigningPolicy has auto-approve enabled, so you don't need to approve the signing request
             signing-policy-slug: test-signing
-            artifact-configuration-slug: ${{ env.USE_PIPELINECONNECTOR == 'true' && 'initial' || 'initial' }} #PowerShell
+            artifact-configuration-slug: ${{ env.USE_PIPELINECONNECTOR == 'true' && 'PowerShell' || 'initial' }} #PowerShell
             github-artifact-id: '${{ steps.upload-artifact-step.outputs.artifact-id }}'
             wait-for-completion: true
             output-artifact-directory: ${{ env.OUTPUT_PATH }}
