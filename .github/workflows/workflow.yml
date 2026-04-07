@@ -10,7 +10,7 @@ on:
 #     repository-projects: read
 
 env:
-  USE_PIPELINECONNECTOR: true
+  USE_PIPELINECONNECTOR: false
   PIPELINECONNECTOR_CONNECTOR_URL: https://pipelineconnector-dev5.connectors.dev.signpath.io:15001/GitHubActions/GitHubCom
   GITHUB_CONNECTOR_URL: https://githubactions-dev5.connectors.dev.signpath.io:15021
   ORG_ID: 9ff791fc-c563-44e3-ab8c-86a33c910bbe
@@ -30,7 +30,7 @@ jobs:
         with: 
           name: my-custom-artifact-name-upload
           path: ${{ env.INPUT_ARTIFACT }}
-          archive: true
+          archive: false
       - name: Run submit signing request
         id: submit_with_download
         uses: signpath/github-action-submit-signing-request@feature/SIGN-8404
@@ -45,4 +45,4 @@ jobs:
             github-artifact-id: '${{ steps.upload-artifact-step.outputs.artifact-id }}'
             wait-for-completion: true
             output-artifact-directory: ${{ env.OUTPUT_PATH }}
-            skip-decompress: true
+            skip-decompress: false
