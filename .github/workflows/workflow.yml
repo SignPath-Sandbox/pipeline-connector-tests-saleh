@@ -33,7 +33,7 @@ jobs:
           archive: false
       - name: Run submit signing request
         id: submit_with_download
-        uses: signpath/github-action-submit-signing-request@main
+        uses: signpath/github-action-submit-signing-request@feature/SIGN-8404
         with:
             connector-url: ${{ env.USE_PIPELINECONNECTOR == 'true' && env.PIPELINECONNECTOR_CONNECTOR_URL || env.GITHUB_CONNECTOR_URL }}
             api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
